@@ -12,10 +12,12 @@ from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 from pandas.tools.plotting import scatter_matrix
 from sklearn.datasets import load_iris
+filterwarnings('ignore')
 
 from Classification_Algorithms import *
 from Clustering_Algorithms import *
 
+import nltk;nltk.download()
 def get_iris_df():
     iris = load_iris()
     iris_df = pd.DataFrame(iris.data, columns=[x[:-5] for x in iris.feature_names])
@@ -52,7 +54,11 @@ log_rgrsn_ans = log_regrsn_clssfr(iris_df["train"], iris_df["test"])
 SVM_ans = SVM_clssfr(iris_df["train"], iris_df["test"])
 KNN_ans = KNN_clssfr(iris_df["train"], iris_df["test"],3)
 rnd_frst_ans = rendom_forest_clssfr(iris_df["train"], iris_df["test"],3)
-
+voting_clsfr(iris_df["train"], iris_df["test"])
+baggin_clsfr(iris_df["train"], iris_df["test"])
+adaBoost_clsf(iris_df["train"], iris_df["test"])
+gadient_boosting(iris_df["train"], iris_df["test"])
+grid_search(iris_df["train"], iris_df["test"])
 clas_ans = rnd_frst_ans
 
 report(clas_ans["y_true"]["test"],
