@@ -12,12 +12,11 @@ from sklearn.cluster import KMeans
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 from pandas.tools.plotting import scatter_matrix
 from sklearn.datasets import load_iris
-filterwarnings('ignore')
+# filterwarnings('ignore')
 
 from Classification_Algorithms import *
 from Clustering_Algorithms import *
 
-import nltk;nltk.download()
 def get_iris_df():
     iris = load_iris()
     iris_df = pd.DataFrame(iris.data, columns=[x[:-5] for x in iris.feature_names])
@@ -59,7 +58,7 @@ baggin_clsfr(iris_df["train"], iris_df["test"])
 adaBoost_clsf(iris_df["train"], iris_df["test"])
 gadient_boosting(iris_df["train"], iris_df["test"])
 grid_search(iris_df["train"], iris_df["test"])
-clas_ans = rnd_frst_ans
+clas_ans = dcn_tree_ans
 
 report(clas_ans["y_true"]["test"],
        clas_ans["y_pred"]["test"],
